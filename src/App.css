@@ -1,5 +1,10 @@
+:root{
+  --primary-color:#099;
+  --border-radius:6px
+}
 .App {
   text-align: center;
+  background-color: #999;
 }
 
 .App-logo {
@@ -22,6 +27,14 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+table,th,tr,td,tbody{
+  border: 2px solid var(--primary-color);
+  border-collapse: collapse;
+}
+thead{
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .App-link {
