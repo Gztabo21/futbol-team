@@ -1,12 +1,11 @@
 import React,{useEffect, useState} from "react";
 
-const ListTeams = () => {
+const ListTeams = ({competitionId}) => {
     const [Teams,setTeams] = useState([]);
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
-    
     useEffect(()=>{
-        fetch('http://api.football-data.org/v2/competitions/2016/teams',{
+        fetch(`http://api.football-data.org/v2/competitions/${competitionId}/teams`,{
             method: 'GET',
             mode: 'cors',
             headers: {'X-Auth-Token': 'ba43837668c3457f9d97bf050df2f8ed'},
@@ -32,6 +31,7 @@ const ListTeams = () => {
     } else {
         return (
             <div className="tb-team">
+            {Teams.length > 0  ? <>
             <label>Competicion: <span>{Teams.competition.name}</span></label>
             <table>
                 <thead><tr><td>Logo</td><td>Nombre</td><td>Fundado</td></tr></thead>
@@ -41,6 +41,7 @@ const ListTeams = () => {
                     <td><span>{t.founded}</span></td>
                 </tr>))}
             </table>
+            </> : null }
             </div>
         );
     }
